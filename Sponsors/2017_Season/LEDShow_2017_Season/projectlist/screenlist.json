@@ -1,0 +1,741 @@
+{
+ "ScreenList": [
+  {
+   "Screen_DisplayMode": 0,
+   "Screen_AdjustPowertimerresult": 0,
+   "Screen_Powertime4use": 0,
+   "Screen_Powertime4off": "07:00",
+   "Screen_Powertime3use": 0,
+   "Screen_Powertime3off": "07:00",
+   "Screen_Powertime2use": 0,
+   "Screen_Powertime1use": 0,
+   "Screen_Powertime1off": "07:00",
+   "Screen_WiFi_Password": "",
+   "Screen_Memory": 2048,
+   "Screen_inner": 1,
+   "Gprs_Unittime": 2000,
+   "Gprs_Unitsize": 900,
+   "Screen_src": "SC1005192655874",
+   "Screen_PA2": "",
+   "Screen_PA1": "",
+   "Com_address": 1,
+   "Screen_PowertimeEnabled": 0,
+   "Screen_controllerName": "LED00001",
+   "Screen_StartUp_LOGOShow": 1,
+   "Screen_PreProgram_LOGOShow": 0,
+   "Screen_WiFi_ComFC": "NFC",
+   "Screen_WiFi_ComAF": "disable",
+   "Screen_Reserved8": "",
+   "Screen_Reserved7": "",
+   "Screen_Reserved6": "",
+   "Screen_Reserved5": "",
+   "Screen_Reserved4": 0,
+   "Screen_Reserved3": 0,
+   "Screen_Reserved2": 0,
+   "Screen_Reserved1": 0,
+   "Screen_USB_SaveMAC": 0,
+   "Gprs_style": 0,
+   "Screen_MuliSendSelectStatus": -1,
+   "Transit_Barcode": "",
+   "Net_ServerIP": "192.168.248.1",
+   "Screen_WiFi_ENC": "NONE",
+   "Screen_WiFi_AP_STD": "11BGN",
+   "Screen_RealityReadWaitTimeOut": 15000,
+   "Screen_WiFi_WorkMode": "Through",
+   "Screen_AdjustLockScreenresult": 0,
+   "Screen_Width": 224,
+   "Screen_scandata": 0,
+   "Screen_WiFi_AP_CH": "Auto",
+   "Screen_WiFi_Baudrate": "57600",
+   "Screen_name": "1-Screen",
+   "Gprs_sim": "00000000000",
+   "Screen_programCount": 0,
+   "Screen_AdjustClocktime": "2017-05-01 15:40:40",
+   "Screen_Gray": 0,
+   "Screen_Delaystartscreen": 0,
+   "Screen_AdjustLockScreenTime": "2000-01-01 00:00:00",
+   "Screen_LockProgram": "",
+   "Screen_bSmartScan": false,
+   "Net_ServerPort": 8001,
+   "Net_ServerMode": 0,
+   "Screen_USB_SaveBtnConfig": 0,
+   "Net_StaticMode": 0,
+   "Screen_LOGO_Height": 48,
+   "Screen_oe": 1,
+   "Screen_da": 0,
+   "Screen_PA": 1,
+   "Screen_WiFi_DataBits": "8",
+   "Screen_scanstyle": 4,
+   "Net_mac": "00-FF-FE-80-1D-99",
+   "Screen_LightTime4Use": 0,
+   "Screen_LightTime3Use": 0,
+   "Screen_LightTime2Use": 0,
+   "Screen_LightTime1Use": 0,
+   "Screen_WiFi_NetIP": "192.168.100.1",
+   "Screen_control": 82,
+   "Com_baudrate": 57600,
+   "Screen_SendMode": 2,
+   "Screen_LOGOMode": 1,
+   "Screen_LOGOFile": "E:\\Google Drive\\Documents\\GitHub\\Scoreboard\\Sponsors\\LEDShow_2017_Season\\LEDShow_2017_Season\\Documents\\Logo_1.txtf",
+   "Screen_ReadWaitTimeOut": 17,
+   "Screen_Powertime4on": "07:00",
+   "Screen_Powertime3on": "07:00",
+   "Screen_Powertime2on": "07:00",
+   "Screen_Powertime1on": "07:00",
+   "Screen_UnitHeight": 8,
+   "Screen_color": 1,
+   "CDMA_style": 0,
+   "Screen_LightValue4": 15,
+   "Screen_LightValue3": 15,
+   "Screen_LightValue2": 15,
+   "Screen_LightValue1": 15,
+   "Controller_Sub_List": [],
+   "Screen_WiFi_NetProType": "TCP",
+   "Gprs_port": 8000,
+   "Screen_WiFi_Gateway": "192.168.100.1",
+   "Screen_AdjustSetuptime": "2000-01-01 00:00:00",
+   "Screen_AdjustPowerresult": 1,
+   "Screen_FreqPar": 0,
+   "Screen_WiFi_NetSubMark": "255.255.255.0",
+   "Net_ServerAccessPassword": "",
+   "Screen_ProtocolVer": 5,
+   "Screen_Podwertime2off": "07:00",
+   "Screen_UnitWidth": 8,
+   "Screen_Reality_Memory": 1528,
+   "Screen_AdjustLigthresult": 1,
+   "Gprs_level": 0,
+   "Screen_WiFi_NetPort": 5005,
+   "Screen_WiFi_NetMode": "Server",
+   "Net_ServerHeartBeatInterval": 20,
+   "Screen_place": " ",
+   "Screen_WiFi_NetServIP": "192.168.0.1",
+   "Screen_LightTime4": "17:30",
+   "Screen_LightTime3": "12:30",
+   "Screen_LightTime2": "10:30",
+   "Screen_LightTime1": "06:30",
+   "ParentIndex": 1,
+   "Screen_oewidth": 12,
+   "Screen_MirrorMode": 0,
+   "Screen_AdjustLigthtime": "2015-10-05 20:54:22",
+   "Gprs_ip": "192.168.0.235",
+   "Gprs_id": "BX-GP000001",
+   "Net_gateway": "192.168.0.1",
+   "Screen_Height": 48,
+   "Screen_Power": 0,
+   "Screen_LockScreen": 0,
+   "Net_ConnnectMode": 0,
+   "Screen_pixels": 1,
+   "EMIF_REG_Index": 156546580,
+   "Screen_AdjustLightMode": 0,
+   "Screen_bCascade": false,
+   "Screen_AdjustPowertimertime": "2000-01-01 00:00:00",
+   "Screen_oefront": 0,
+   "Screen_Powerstate": 0,
+   "CDMA_sim": "00000000000",
+   "Screen_ProjectName": "E:\\Google Drive\\Documents\\GitHub\\Scoreboard\\Sponsors\\LEDShow_2017_Season\\LEDShow_2017_Season\\projectlist\\WynnumRugby.pj",
+   "Screen_USB_SaveDispParas": -1,
+   "Screen_MuliSendCMD": 0,
+   "Screen_AdjustPowertime": "2015-10-05 20:48:30",
+   "Screen_WiFi_EnWiFIMode": "AP",
+   "Com_address_Old": 1,
+   "Screen_USB_SaveScan": -1,
+   "Screen_USB_SavePars": -1,
+   "Screen_USB_SaveLOGO": 0,
+   "Screen_LOGO_Width": 224,
+   "Screen_ScanTime": 1,
+   "Screen_USB_SaveTimONOFF": 0,
+   "CDMA_ip": "192.168.0.235",
+   "CDMA_id": "10000000",
+   "Screen_LOGO_Y": 0,
+   "Screen_LOGO_X": 0,
+   "Screen_WiFi_ComParity": "None",
+   "Screen_DispMode1": 0,
+   "Screen_SelectStatus": true,
+   "Screen_LOGOAlign": 0,
+   "Screen_USB_SaveDelayStart": 0,
+   "Net_port": 5005,
+   "Com_port": 0,
+   "Screen_WiFi_Name": "BX-WiFi",
+   "Screen_SmartScan": [
+    {
+     "ColorCorrect_R": 100,
+     "ColorCorrect_G": 100,
+     "ColorCorrect_B": 100,
+     "ScreenColor": 4,
+     "RSN": 0,
+     "GSN": 1,
+     "Chn": 0,
+     "BSN": 2,
+     "RowsPerChn": 16,
+     "ChipID": 0,
+     "FoldNum": 1,
+     "Decoder_unen": 1,
+     "disp_refresh": 1701860,
+     "InvalidPoints": 0,
+     "OEFront": 80,
+     "MinOE_Width": 156546552,
+     "Lat_sign_width": 40,
+     "ConfNumber": 0,
+     "Wu": 16,
+     "OE": 0,
+     "Hu": 8,
+     "DA": 1,
+     "GAM_R": 2.2,
+     "GAM_G": 2.2,
+     "GAM_B": 2.2,
+     "DisplayMode": 1,
+     "ln_cont_mod": 5370128,
+     "ScanName": "",
+     "Con_Table_List": [
+      {
+       "Con_Table_Data": 1
+      },{
+       "Con_Table_Data": 2
+      },{
+       "Con_Table_Data": 3
+      },{
+       "Con_Table_Data": 4
+      },{
+       "Con_Table_Data": 5
+      },{
+       "Con_Table_Data": 6
+      },{
+       "Con_Table_Data": 7
+      },{
+       "Con_Table_Data": 8
+      },{
+       "Con_Table_Data": 9
+      },{
+       "Con_Table_Data": 10
+      },{
+       "Con_Table_Data": 11
+      },{
+       "Con_Table_Data": 12
+      },{
+       "Con_Table_Data": 13
+      },{
+       "Con_Table_Data": 14
+      },{
+       "Con_Table_Data": 15
+      },{
+       "Con_Table_Data": 16
+      },{
+       "Con_Table_Data": 17
+      },{
+       "Con_Table_Data": 18
+      },{
+       "Con_Table_Data": 19
+      },{
+       "Con_Table_Data": 20
+      },{
+       "Con_Table_Data": 21
+      },{
+       "Con_Table_Data": 22
+      },{
+       "Con_Table_Data": 23
+      },{
+       "Con_Table_Data": 24
+      },{
+       "Con_Table_Data": 25
+      },{
+       "Con_Table_Data": 26
+      },{
+       "Con_Table_Data": 27
+      },{
+       "Con_Table_Data": 28
+      },{
+       "Con_Table_Data": 29
+      },{
+       "Con_Table_Data": 30
+      },{
+       "Con_Table_Data": 31
+      },{
+       "Con_Table_Data": 32
+      },{
+       "Con_Table_Data": 33
+      },{
+       "Con_Table_Data": 34
+      },{
+       "Con_Table_Data": 35
+      },{
+       "Con_Table_Data": 36
+      },{
+       "Con_Table_Data": 37
+      },{
+       "Con_Table_Data": 38
+      },{
+       "Con_Table_Data": 39
+      },{
+       "Con_Table_Data": 40
+      },{
+       "Con_Table_Data": 41
+      },{
+       "Con_Table_Data": 42
+      },{
+       "Con_Table_Data": 43
+      },{
+       "Con_Table_Data": 44
+      },{
+       "Con_Table_Data": 45
+      },{
+       "Con_Table_Data": 46
+      },{
+       "Con_Table_Data": 47
+      },{
+       "Con_Table_Data": 48
+      },{
+       "Con_Table_Data": 49
+      },{
+       "Con_Table_Data": 50
+      },{
+       "Con_Table_Data": 51
+      },{
+       "Con_Table_Data": 52
+      },{
+       "Con_Table_Data": 53
+      },{
+       "Con_Table_Data": 54
+      },{
+       "Con_Table_Data": 55
+      },{
+       "Con_Table_Data": 56
+      },{
+       "Con_Table_Data": 57
+      },{
+       "Con_Table_Data": 58
+      },{
+       "Con_Table_Data": 59
+      },{
+       "Con_Table_Data": 60
+      },{
+       "Con_Table_Data": 61
+      },{
+       "Con_Table_Data": 62
+      },{
+       "Con_Table_Data": 63
+      },{
+       "Con_Table_Data": 64
+      },{
+       "Con_Table_Data": 65
+      },{
+       "Con_Table_Data": 66
+      },{
+       "Con_Table_Data": 67
+      },{
+       "Con_Table_Data": 68
+      },{
+       "Con_Table_Data": 69
+      },{
+       "Con_Table_Data": 70
+      },{
+       "Con_Table_Data": 71
+      },{
+       "Con_Table_Data": 72
+      },{
+       "Con_Table_Data": 73
+      },{
+       "Con_Table_Data": 74
+      },{
+       "Con_Table_Data": 75
+      },{
+       "Con_Table_Data": 76
+      },{
+       "Con_Table_Data": 77
+      },{
+       "Con_Table_Data": 78
+      },{
+       "Con_Table_Data": 79
+      },{
+       "Con_Table_Data": 80
+      },{
+       "Con_Table_Data": 81
+      },{
+       "Con_Table_Data": 82
+      },{
+       "Con_Table_Data": 83
+      },{
+       "Con_Table_Data": 84
+      },{
+       "Con_Table_Data": 85
+      },{
+       "Con_Table_Data": 86
+      },{
+       "Con_Table_Data": 87
+      },{
+       "Con_Table_Data": 88
+      },{
+       "Con_Table_Data": 89
+      },{
+       "Con_Table_Data": 90
+      },{
+       "Con_Table_Data": 91
+      },{
+       "Con_Table_Data": 92
+      },{
+       "Con_Table_Data": 93
+      },{
+       "Con_Table_Data": 94
+      },{
+       "Con_Table_Data": 95
+      },{
+       "Con_Table_Data": 96
+      },{
+       "Con_Table_Data": 97
+      },{
+       "Con_Table_Data": 98
+      },{
+       "Con_Table_Data": 99
+      },{
+       "Con_Table_Data": 100
+      },{
+       "Con_Table_Data": 101
+      },{
+       "Con_Table_Data": 102
+      },{
+       "Con_Table_Data": 103
+      },{
+       "Con_Table_Data": 104
+      },{
+       "Con_Table_Data": 105
+      },{
+       "Con_Table_Data": 106
+      },{
+       "Con_Table_Data": 107
+      },{
+       "Con_Table_Data": 108
+      },{
+       "Con_Table_Data": 109
+      },{
+       "Con_Table_Data": 110
+      },{
+       "Con_Table_Data": 111
+      },{
+       "Con_Table_Data": 112
+      },{
+       "Con_Table_Data": 113
+      },{
+       "Con_Table_Data": 114
+      },{
+       "Con_Table_Data": 115
+      },{
+       "Con_Table_Data": 116
+      },{
+       "Con_Table_Data": 117
+      },{
+       "Con_Table_Data": 118
+      },{
+       "Con_Table_Data": 119
+      },{
+       "Con_Table_Data": 120
+      },{
+       "Con_Table_Data": 121
+      },{
+       "Con_Table_Data": 122
+      },{
+       "Con_Table_Data": 123
+      },{
+       "Con_Table_Data": 124
+      },{
+       "Con_Table_Data": 125
+      },{
+       "Con_Table_Data": 126
+      },{
+       "Con_Table_Data": 127
+      },{
+       "Con_Table_Data": 128
+      },{
+       "Con_Table_Data": 129
+      },{
+       "Con_Table_Data": 130
+      },{
+       "Con_Table_Data": 131
+      },{
+       "Con_Table_Data": 132
+      },{
+       "Con_Table_Data": 133
+      },{
+       "Con_Table_Data": 134
+      },{
+       "Con_Table_Data": 135
+      },{
+       "Con_Table_Data": 136
+      },{
+       "Con_Table_Data": 137
+      },{
+       "Con_Table_Data": 138
+      },{
+       "Con_Table_Data": 139
+      },{
+       "Con_Table_Data": 140
+      },{
+       "Con_Table_Data": 141
+      },{
+       "Con_Table_Data": 142
+      },{
+       "Con_Table_Data": 143
+      },{
+       "Con_Table_Data": 144
+      },{
+       "Con_Table_Data": 145
+      },{
+       "Con_Table_Data": 146
+      },{
+       "Con_Table_Data": 147
+      },{
+       "Con_Table_Data": 148
+      },{
+       "Con_Table_Data": 149
+      },{
+       "Con_Table_Data": 150
+      },{
+       "Con_Table_Data": 151
+      },{
+       "Con_Table_Data": 152
+      },{
+       "Con_Table_Data": 153
+      },{
+       "Con_Table_Data": 154
+      },{
+       "Con_Table_Data": 155
+      },{
+       "Con_Table_Data": 156
+      },{
+       "Con_Table_Data": 157
+      },{
+       "Con_Table_Data": 158
+      },{
+       "Con_Table_Data": 159
+      },{
+       "Con_Table_Data": 160
+      },{
+       "Con_Table_Data": 161
+      },{
+       "Con_Table_Data": 162
+      },{
+       "Con_Table_Data": 163
+      },{
+       "Con_Table_Data": 164
+      },{
+       "Con_Table_Data": 165
+      },{
+       "Con_Table_Data": 166
+      },{
+       "Con_Table_Data": 167
+      },{
+       "Con_Table_Data": 168
+      },{
+       "Con_Table_Data": 169
+      },{
+       "Con_Table_Data": 170
+      },{
+       "Con_Table_Data": 171
+      },{
+       "Con_Table_Data": 172
+      },{
+       "Con_Table_Data": 173
+      },{
+       "Con_Table_Data": 174
+      },{
+       "Con_Table_Data": 175
+      },{
+       "Con_Table_Data": 176
+      },{
+       "Con_Table_Data": 177
+      },{
+       "Con_Table_Data": 178
+      },{
+       "Con_Table_Data": 179
+      },{
+       "Con_Table_Data": 180
+      },{
+       "Con_Table_Data": 181
+      },{
+       "Con_Table_Data": 182
+      },{
+       "Con_Table_Data": 183
+      },{
+       "Con_Table_Data": 184
+      },{
+       "Con_Table_Data": 185
+      },{
+       "Con_Table_Data": 186
+      },{
+       "Con_Table_Data": 187
+      },{
+       "Con_Table_Data": 188
+      },{
+       "Con_Table_Data": 189
+      },{
+       "Con_Table_Data": 190
+      },{
+       "Con_Table_Data": 191
+      },{
+       "Con_Table_Data": 192
+      },{
+       "Con_Table_Data": 193
+      },{
+       "Con_Table_Data": 194
+      },{
+       "Con_Table_Data": 195
+      },{
+       "Con_Table_Data": 196
+      },{
+       "Con_Table_Data": 197
+      },{
+       "Con_Table_Data": 198
+      },{
+       "Con_Table_Data": 199
+      },{
+       "Con_Table_Data": 200
+      },{
+       "Con_Table_Data": 201
+      },{
+       "Con_Table_Data": 202
+      },{
+       "Con_Table_Data": 203
+      },{
+       "Con_Table_Data": 204
+      },{
+       "Con_Table_Data": 205
+      },{
+       "Con_Table_Data": 206
+      },{
+       "Con_Table_Data": 207
+      },{
+       "Con_Table_Data": 208
+      },{
+       "Con_Table_Data": 209
+      },{
+       "Con_Table_Data": 210
+      },{
+       "Con_Table_Data": 211
+      },{
+       "Con_Table_Data": 212
+      },{
+       "Con_Table_Data": 213
+      },{
+       "Con_Table_Data": 214
+      },{
+       "Con_Table_Data": 215
+      },{
+       "Con_Table_Data": 216
+      },{
+       "Con_Table_Data": 217
+      },{
+       "Con_Table_Data": 218
+      },{
+       "Con_Table_Data": 219
+      },{
+       "Con_Table_Data": 220
+      },{
+       "Con_Table_Data": 221
+      },{
+       "Con_Table_Data": 222
+      },{
+       "Con_Table_Data": 223
+      },{
+       "Con_Table_Data": 224
+      },{
+       "Con_Table_Data": 225
+      },{
+       "Con_Table_Data": 226
+      },{
+       "Con_Table_Data": 227
+      },{
+       "Con_Table_Data": 228
+      },{
+       "Con_Table_Data": 229
+      },{
+       "Con_Table_Data": 230
+      },{
+       "Con_Table_Data": 231
+      },{
+       "Con_Table_Data": 232
+      },{
+       "Con_Table_Data": 233
+      },{
+       "Con_Table_Data": 234
+      },{
+       "Con_Table_Data": 235
+      },{
+       "Con_Table_Data": 236
+      },{
+       "Con_Table_Data": 237
+      },{
+       "Con_Table_Data": 238
+      },{
+       "Con_Table_Data": 239
+      },{
+       "Con_Table_Data": 240
+      },{
+       "Con_Table_Data": 241
+      },{
+       "Con_Table_Data": 242
+      },{
+       "Con_Table_Data": 243
+      },{
+       "Con_Table_Data": 244
+      },{
+       "Con_Table_Data": 245
+      },{
+       "Con_Table_Data": 246
+      },{
+       "Con_Table_Data": 247
+      },{
+       "Con_Table_Data": 248
+      },{
+       "Con_Table_Data": 249
+      },{
+       "Con_Table_Data": 250
+      },{
+       "Con_Table_Data": 251
+      },{
+       "Con_Table_Data": 252
+      },{
+       "Con_Table_Data": 253
+      },{
+       "Con_Table_Data": 254
+      },{
+       "Con_Table_Data": 255
+      },{
+       "Con_Table_Data": 256
+      }],
+     "Scan": 16,
+     "Freq": 4226200,
+     "RouteSeq": 0
+    }],
+   "Net_mark": "255.255.255.0",
+   "Screen_AdjustClockresult": 1,
+   "Screen_WiFi_AUTH": "OPEN",
+   "CDMA_Unittime": 2000,
+   "CDMA_Unitsize": 900,
+   "CDMA_level": 0,
+   "Screen_WiFi_STA_NetMode": "Static",
+   "Screen_USB_SaveMegInfo": 0,
+   "Screen_WiFi_StopBits": "1",
+   "Screen_LOGOHoldtime": 8,
+   "Screen_Light": 15,
+   "Screen_AdjustSetupresult": 0,
+   "Network_ID": "",
+   "Screen_USB_SaveIP": 0,
+   "Screen_NoProgram_LOGOShow": 1,
+   "Screen_CascadeMode": 1,
+   "Screen_USB_SaveLight": 0,
+   "Net_IP": "192.168.0.45",
+   "Screen_Modifytime": "2015-10-05 21:33:52",
+   "Screen_roworder": 0,
+   "Screen_Controllerbuttonconfiguration": 0,
+   "CDMA_port": 8000,
+   "Scan_Mode": 0
+  }],
+ "ProgramVersion": "15.6.19.0",
+ "GroupScreenList": [
+  {
+   "Grp_SelectStatus": -1,
+   "AbsoluteIndex": 1,
+   "Level": 0,
+   "ParentIndex": 0,
+   "Text": "DefaultGroup1",
+   "Screenid": -1
+  }]
+}
