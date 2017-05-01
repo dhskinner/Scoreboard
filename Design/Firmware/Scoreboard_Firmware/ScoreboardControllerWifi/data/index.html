@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wynnum Rugby</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Scoreboard">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#707070">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        /* All styles */
+        * {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 100%;
+            border-style: none;
+            border-width: 0px;
+        }
+
+        /* Body and content syles */
+        body {
+            background-color: #20282D;
+            min-width: 320px;
+            padding: 0;
+            margin: 60px 0;
+        }
+
+        noscript {
+            text-align: center;
+            color: white;
+        }
+
+        header, .footer {
+            display: block;
+            text-align: center;
+            font-size: 120%;
+            color: #FFFFFF;
+            background-color: #555555;
+            height: 40px;
+            padding: 5px 0;
+            margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            z-index: 998;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .outer {
+            text-align: center;
+            vertical-align: top;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .inner {
+            text-align: center;
+            vertical-align: top;
+            display: inline-block;
+            padding: 0;
+            margin: 12px 0 0 0;
+        }
+
+        /* Table styles */
+        table, caption, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+            table td.shrink {
+                white-space: nowrap;
+            }
+
+            table td.expand {
+                width: 99%;
+            }
+
+            table td.left {
+                text-align: left;
+                vertical-align: middle;
+                padding: 0 50px 0 0;
+                margin: 0;
+            }
+
+            table.wide {
+                width: 100%;
+            }
+
+            table.equal {
+                table-layout: fixed;
+            }
+
+            table.padded {
+                table-layout: fixed;
+                border-collapse: separate;
+                border-spacing: 15px;
+            }
+
+        /* General Sizes and styles */
+        .nam {
+            cursor: pointer;
+            font-size: 120%;
+            color: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .num {
+            cursor: pointer;
+            font-size: 500%;
+            min-width: 150px;
+            padding: 0 10px;
+            margin: 0;
+        }
+
+        img {
+            padding: 0;
+            margin: 0;
+        }
+
+        .sml {
+            min-width: 30px;
+        }
+
+        .med {
+            display: inline-block;
+            min-width: 20%;
+        }
+
+        .lge {
+            width: 100%;
+        }
+
+        /* Positioning */
+        .centre {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Buttons */
+        .btn-grp {
+            border-radius: 5px;
+            background: #555555;
+            box-shadow: 1px 1px 1px rgba(255,255,255,0.1);
+            width: auto;
+            padding: 5px;
+            margin: 0 auto;
+        }
+
+            .btn-grp.shrink {
+                display: inline-block;
+            }
+
+        .btn {
+            outline: 0;
+            cursor: pointer;
+        }
+
+            .btn.dark {
+                color: #9fa8b0;
+                background: #232B30;
+                border: 1px solid #1c252b;
+                box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+                text-shadow: 1px 1px #1f272b;
+            }
+
+            .btn.light {
+                color: #FFFFFF;
+                background: #555555;
+                border: 1px solid #666666;
+                box-shadow: 1px 1px 1px rgba(255,255,255,0.1);
+                text-shadow: 1px 1px #ffffff;
+            }
+
+            .btn.square {
+                border-radius: 5px;
+                padding: 5px 12px;
+                margin: 0 5px;
+            }
+
+            .btn.round {
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                line-height: 50px;
+                overflow: hidden;
+                vertical-align: middle;
+                margin: 10px;
+            }
+
+            .btn:hover {
+                color: #fff;
+                background: #4C5A64;
+            }
+
+            .btn:active {
+                background-position: 0 top;
+                position: relative;
+                top: 1px;
+                color: #fff;
+                background: #4C5A64;
+                box-shadow: 1px 1px 1px rgba(255,255,255,0.1);
+            }
+
+        /* Radiobutton labels */
+        label {
+            display: inline-block;
+        }
+
+        /* Any input that is a radio button */
+        input[type="radio"] {
+            visibility: hidden;
+            display: none;
+        }
+
+            /* A button that immediately follows an input of type radio that is checked */
+            input[type="radio"]:checked + .btn {
+                font-weight: bold;
+                color: #fff;
+                background: #4C5A64;
+            }
+
+        /* Progress Spinner */
+        @keyframes spin {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        .progress {
+            position: relative;
+            display: inline-block;
+            width: 5em;
+            height: 5em;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            text-indent: 999em;
+            overflow: hidden;
+            animation: spin 1s infinite steps(8);
+        }
+
+        .sml.progress {
+            font-size: 6px;
+        }
+
+        .lge.progress {
+            font-size: 24px;
+        }
+
+        .progress:before,
+        .progress:after,
+        .progress > div:before,
+        .progress > div:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2.25em; /*(container width - part width)/2  */
+            width: .5em;
+            height: 1.5em;
+            border-radius: .2em;
+            background: #eee;
+            box-shadow: 0 3.5em #eee; /* container height - part height */
+            transform-origin: 50% 2.5em; /* container height / 2 */
+        }
+
+        .progress:before {
+            background: #bbb;
+        }
+
+        .progress:after {
+            transform: rotate(-45deg);
+            background: #999;
+        }
+
+        .progress > div:before {
+            transform: rotate(-90deg);
+            background: #777;
+        }
+
+        .progress > div:after {
+            transform: rotate(-135deg);
+            background: #555;
+        }
+
+        /* Loading Screen */
+        #idfade {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: #20282D;
+            z-index: 1001;
+            -moz-opacity: 0.5;
+            opacity: .70;
+            filter: alpha(opacity=80);
+        }
+
+        #idmodal {
+            display: none;
+            width: 100px;
+            height: 100px;
+            z-index: 1002;
+            text-align: center;
+            overflow: auto;
+        }
+
+        /* Signal Bars */
+        #idbar {
+            float: left;
+            height: 40px;
+            width: 65px;
+            list-style: none;
+            overflow: hidden;
+            display: inline-block;
+            margin: 0;
+        }
+
+            #idbar li {
+                display: inline-block;
+                width: 10px;
+                float: left;
+                height: 100%;
+                margin-right: 1px;
+            }
+
+                #idbar li.bar4 {
+                    padding-top: 0px;
+                }
+
+                #idbar li.bar3 {
+                    padding-top: 8px;
+                }
+
+                #idbar li.bar2 {
+                    padding-top: 16px;
+                }
+
+                #idbar li.bar1 {
+                    padding-top: 24px;
+                }
+
+                #idbar li.bar0 {
+                    padding-top: 32px;
+                }
+
+                #idbar li div {
+                    height: 100%;
+                    border: thin solid #888888;
+                }
+
+        /* Battery */
+        #idBatteryBody {
+            float: left;
+            width: 70px;
+            height: 30px;
+            border: thin solid #888888;
+        }
+
+        .clBattery {
+            width: 80px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .clBatteryEnd {
+            float: left;
+            height: 30px;
+            width: 5px;
+        }
+
+            .clBatteryEnd div {
+                width: 5px;
+                height: 16px;
+                margin-top: 7px;
+                margin-left: 1px;
+                background-color: #888888;
+            }
+
+        #idBatteryIndicator {
+            height: 100%;
+            width: 50%;
+        }
+
+            #idBatteryIndicator.ok {
+                background-color: #00FF00;
+            }
+
+            #idBatteryIndicator.low {
+                background-color: #FF0000;
+            }
+
+        /* Show and Hide */
+        .outer, .footer, header, .declutter, .logo, .disable {
+            display: none;
+        }
+
+        /* .num { border-style: solid; border-width: 1px; } */
+        /* MEDIA QUERIES */
+        /* less than 320 (just for test)*/
+        @media only screen and (max-device-width:319px) {
+            .num {
+                border-color: red;
+            }
+        }
+        /* check for orientation (just for test) */
+        @media only screen and (max-device-width:319px) and (orientation: landscape) {
+            .num {
+                border-color: orange;
+            }
+        }
+
+        /* smartphones, iPhone, portrait 480x320 phones */
+        @media (min-width:320px) {
+            .num {
+                border-color: yellow;
+            }
+        }
+
+        /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+        /* Iphone 2 to 4S is 320 x 480 */
+        @media (min-width:470px) {
+            .num {
+                border-color: brown;
+            }
+
+            td.declutter {
+                display: table-cell;
+            }
+
+            .logo {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            img {
+                width: 50px;
+                height: 50px;
+                margin: 0 5px;
+            }
+        }
+
+        /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+        /* iphone 5C is 320 x 568 */
+        @media (min-width:560px) {
+            .num {
+                border-color: indigo;
+            }
+
+            img {
+                width: 75px;
+                height: 75px;
+                margin: 0 10px;
+            }
+        }
+
+        /* tablet, landscape iPad, lo-res laptops ands desktops */
+        @media (min-width:961px) {
+            .nam {
+                font-size: 200%;
+            }
+
+            .num {
+                border-color: violet;
+                font-size: 800%;
+            }
+
+            img {
+                width: 120px;
+                height: 120px;
+                margin: 0 20px;
+            }
+        }
+
+        /* big landscape tablets, laptops, and desktops */
+        @media (min-width:1025px) {
+            .num {
+                border-color: white;
+            }
+        }
+
+        /* hi-res laptops and desktops */
+        @media (min-width:1281px) {
+            .nam {
+                border-color: gold;
+            }
+        }
+    </style>
+</head>
+<body onload="Init()">
+    <noscript>
+        <p>Please enable JavaScript</p>
+    </noscript>
+    <script type="text/javascript">
+        var state_t = {
+            NORM: 0,
+            SCORE: 1,
+            TIMER: 2,
+            MODE: 3,
+            ERROR: 4
+        };
+
+        /* constants */
+        var DISPLAY_TIMEOUT = 10;
+        var COMMS_TIMEOUT = 5;
+        var REFRESH_TIMEOUT = 30;
+        var TICKER_TIMEOUT = 1000;
+        var MAX_TIMER = 5999;
+        var MAX_SCORE = 199;
+        var C2 = "#00FF00";         /* green */
+        var C1 = "#FF0000";         /* red */
+        var C0 = "#444444";         /* gray */
+
+        /* variables */
+        var state = state_t.NORM;
+        var timermode = 'stop';
+        var fieldid = 1;
+        var teamname1 = "WYNNUM";
+        var teamname2 = "GUESTS";
+        var scoreval1 = 0;
+        var scoreval2 = 0;
+        var timerval = 0;
+        var clock = "off";
+        var swap = "off";
+        var dual = "off";
+        var bright = 6;
+        var signal = 0;
+        var battery = 0;
+        var tempscoreval = 0;
+        var tempscoreid = 0;
+        var commsticks = -1;
+        var displayticks = 0;
+        var refreshticks = 0;
+
+        /* ========== helper functions ========== */
+        function itoa3( i ) {
+            return ( "  " + i ).slice( -3 );
+        }
+        function atoi( a ) {
+            return parseInt( a, 10 );
+        }
+        function constrain( e, min, max ) {
+            return Math.min( Math.max( e, min ), max );
+        }
+        function Check( e ) {
+            Elem( e ).checked = true;
+        }
+        function HideCl( e ) {
+            try {
+                var items = Cl( e );
+                for ( var i = 0; i < items.length; ++i ) {
+                    Hide( items[i] );
+                }
+            }
+            catch ( err ) {
+                alert( err.message )
+            }
+        }
+        function HideEl( e ) {
+            Hide( Elem( e ) );
+        }
+        function Hide( e ) {
+            e.style.display = 'none';
+        }
+        function ShowCl( e ) {
+            try {
+                var items = Cl( e );
+                for ( var i = 0; i < items.length; ++i ) {
+                    Show( items[i] );
+                }
+            }
+            catch ( err ) {
+                alert( err.message )
+            }
+        }
+        function ShowEl( e ) {
+            Show( Elem( e ) );
+        }
+        function Show( e ) {
+            if ( e.nodeName == 'TR' )
+                e.style.display = 'table-row';
+            else
+                e.style.display = 'block';
+        }
+        function Inv( e ) {
+            Elem( e ).style.visibility = 'hidden';
+        }
+        function Vis( e ) {
+            Elem( e ).style.visibility = 'visible';
+        }
+        function InvCl( e ) {
+            try {
+                var items = Cl( e );
+                for ( var i = 0; i < items.length; ++i ) {
+                    var elem = items[i];
+                    elem.style.visibility = 'hidden';
+                }
+            }
+            catch ( err ) {
+                alert( err.message )
+            }
+        }
+        function VisCl( e ) {
+            try {
+                var items = Cl( e );
+                for ( var i = 0; i < items.length; ++i ) {
+                    var elem = items[i];
+                    elem.style.visibility = 'visible';
+                }
+            }
+            catch ( err ) {
+                alert( err.message )
+            }
+        }
+        function Elem( e ) {
+            return document.getElementById( e );
+        }
+        function Cl( e ) {
+            var elems = document.getElementsByClassName( e );
+            return elems;
+        }
+        /* ========== Startup ========== */
+        function Init() {
+            var col = "#6495ed";
+            if ( fieldid == 2 ) {
+                document.getElementById( "idfield" ).innerHTML = "FIELD 2";
+                col = "#00ff7f";
+            }
+            /* Set the color of the large numbers */
+            var items = Cl( "num" );
+            for ( var i = 0; i < items.length; ++i ) {
+                var elem = items[i];
+                elem.style.color = col;
+            }
+ 
+            /* Set the team names */
+            Elem( "idname1" ).innerHTML = teamname1;
+            Elem( "idname2" ).innerHTML = teamname2;
+
+            SetState( state_t.NORM );
+            Signal();
+            Battery();
+            GetRefresh( false );
+        }
+
+        /* ========== Ticker ========== */
+        setInterval( function () {
+
+            /* update the timer */
+            if ( timermode == "run" ) {
+                if ( timerval < MAX_TIMER )
+                    timerval += 1;
+                Timer();
+            }
+
+            /* deselect any text that has been inadvertantly highlighted */
+            document.getSelection().removeAllRanges();
+
+            /* Hide the menus and return to default layout after a timeout */
+            displayticks += 1;
+            if ( displayticks >= DISPLAY_TIMEOUT )
+                SetState( state_t.NORM );
+
+            /* Periodically get updated data from the controller */
+            refreshticks += 1;
+            if ( refreshticks >= REFRESH_TIMEOUT )
+                GetRefresh( true );
+
+            /* Check for a timeout sending/receiving comms */
+            if ( commsticks != -1 )
+                commsticks += 1;
+            if ( commsticks >= COMMS_TIMEOUT ) {
+                Error( "Controller is not responding" );
+                Signal();
+            }
+        }, TICKER_TIMEOUT );
+
+        function Tick() {
+            displayticks = 0;
+        }
+
+        /* ========== Set UI Elements ========== */
+        function Score1( e ) {
+            Elem( "idscore1" ).innerHTML = itoa3( e );
+        }
+        function Score2( e ) {
+            Elem( "idscore2" ).innerHTML = itoa3( e );
+        }
+        function TempNum( num ) {
+            Elem( "idtempnum" ).innerHTML = itoa3( num );
+        }
+        function TempNam( nam ) {
+            Elem( "idtempnam" ).innerHTML = nam;
+        }
+        function Timer() {
+            Check(( "rb" + timermode ) );
+            if ( timermode == "stop" ) {
+                timerval = 0;
+                Elem( "idtimer" ).innerHTML = "00:00";
+                return;
+            }
+            var m = Math.floor( timerval / 60 );
+            var s = timerval % 60;
+            var e = ( ( m < 10 ) ? '0' : '' ) + m + ':' + ( ( s < 10 ) ? '0' : '' ) + s;
+            Elem( "idtimer" ).innerHTML = e;
+        }
+        function Mode() {
+            if ( clock == "on" )
+                Check( "rbclckon" );
+            else
+                Check( "rbclckof" );
+
+            if ( swap == "on" )
+                Check( "rbswapon" );
+            else
+                Check( "rbswapof" );
+
+            if ( dual == "on" )
+                Check( "rbdualon" );
+            else
+                Check( "rbdualof" );
+            Elem( "idbright" ).value = bright;
+        }
+        function Error( str ) {
+            commsticks = -1;
+            Elem( "iderrormsg" ).innerHTML = str;
+            SetState( state_t.ERROR );
+        }
+        function Bar( e, col ) {
+            Elem( e ).style.background = col;
+        }
+        function Signal() {
+            Elem( "idsignal" ).innerHTML = signal + '/5';
+
+            /* set the bar colors according to signal */
+            if ( signal <= 1 ) {
+                Bar( "idbar0", C1 );
+            }
+            else
+                Bar( "idbar0", C2 );
+
+            Bar( "idbar1", signal > 1 ? C2 : C0 );
+            Bar( "idbar2", signal > 2 ? C2 : C0 );
+            Bar( "idbar3", signal > 3 ? C2 : C0 );
+            Bar( "idbar4", signal > 4 ? C2 : C0 );
+        }
+
+        function Battery() {
+
+            Elem( "idbattery" ).innerHTML = battery + '%';
+
+            /* change battery color */
+            var batteryIndicator = document.querySelector( "#idBatteryIndicator" );
+
+            if ( battery <= 20 ) {
+                setClass( batteryIndicator, "low" );
+            } else {
+                setClass( batteryIndicator, "ok" );
+            }
+
+            /* draw battery level */
+            batteryIndicator.style.width = constrain( battery, 5, 100 ) + "%";
+        }
+
+        function setClass( element, classToAdd ) {
+            element.className = classToAdd;
+        }
+
+        /* ========== Set the UI State ========== */
+        function SetState( e ) {
+            switch ( e ) {
+                case state_t.SCORE:
+                    HideCl( "outer" );
+                    HideCl( "footer" );
+                    ShowEl( "idtempdiv" );
+                    ShowEl( "idfooter1" );
+                    break;
+                case state_t.TIMER:
+                    HideCl( "outer" );
+                    ShowEl( "idtimerdiv" );
+                    HideCl( "footer" );
+                    ShowEl( "idfooter2" );
+                    break;
+                case state_t.MODE:
+                    Mode();
+                    HideCl( "outer" );
+                    ShowEl( "idmodediv" );
+                    HideCl( "footer" );
+                    ShowEl( "idfooter1" );
+                    break;
+                case state_t.ERROR:
+                    HideCl( "footer" );
+                    ShowEl( "idfooter3" );
+                    break;
+                default:
+                    Timer( timerval );
+                    HideCl( "outer" );
+                    ShowEl( "idheader" );
+                    ShowEl( "idscorediv" );
+                    ShowEl( "idtimerdiv" );
+                    HideCl( "footer" );
+                    break;
+            }
+            HideLoader();
+            document.getSelection().removeAllRanges();
+            state = e;
+            Tick();
+        }
+        function ShowScore( id ) {
+
+            var tempscorenam;
+            tempscoreid = id;
+
+            if ( id == 1 ) {
+                tempscoreval = scoreval1;
+                tempscorenam = teamname1;
+            } else if ( id == 2 ) {
+                tempscoreval = scoreval2;
+                tempscorenam = teamname2;
+            } else
+                return;
+
+            TempNum( tempscoreval );
+            TempNam( tempscorenam );
+            SetState( state_t.SCORE );
+        }
+        function ShowTimer() {
+            if ( state == state_t.TIMER )
+                SetState( state_t.NORM );
+            else
+                SetState( state_t.TIMER );
+        }
+        function ShowMode() {
+            if ( state == state_t.MODE )
+                SetState( state_t.NORM );
+            else
+                SetState( state_t.MODE );
+        }
+        function ShowNorm() {
+            SetState( state_t.NORM );
+        }
+        function ShowLoader() {
+            Elem( "idmodal" ).style.display = "block";
+            Elem( "idfade" ).style.display = "block";
+            commsticks = 0;
+        }
+        function ShowLoaderSmall() {
+            Elem( "idloadersmall" ).style.display = "block";
+        }
+        function HideLoader() {
+            Elem( "idmodal" ).style.display = "none";
+            Elem( "idfade" ).style.display = "none";
+            Elem( "idloadersmall" ).style.display = "none";
+        }
+        function HideError( e ) {
+            if ( state == state_t.ERROR ) {
+                state = e;
+                SetState( e );
+            }
+        }
+        /* ========== Handle UI Interactions ========== */
+        function Add( val ) {
+            /* if an error is showing, hide it */
+            HideError( state_t.SCORE );
+
+            /* Set the temp score */
+            tempscoreval = constrain( tempscoreval + val, 0, MAX_SCORE );
+            TempNum( tempscoreval );
+            Tick();
+        }
+
+        /* send a preformatted message to the controller */
+        function SendMsg( m ) {
+            var s;
+            switch ( state ) {
+                case state_t.SCORE:
+                    var s1 = tempscoreid == 1 ? tempscoreval : scoreval1;
+                    var s2 = tempscoreid == 2 ? tempscoreval : scoreval2;
+                    s = "score?field=" + fieldid + "&score1=" + s1 + "&score2=" + s2;
+                    break;
+                case state_t.MODE:
+                    clock = Elem( "rbclckon" ).checked ? "on" : "off";
+                    dual = Elem( "rbdualon" ).checked ? "on" : "off";
+                    swap = Elem( "rbswapon" ).checked ? "on" : "off";
+                    bright = Elem( "idbright" ).value;
+                    s = "mode?field=" + fieldid + "&clock=" + clock + "&dual=" + dual + "&swap=" + swap + "&bright=" + bright;
+                    break;
+                case state_t.TIMER:
+                    timermode = m;
+                    Timer();
+                    s = "timer?field=" + fieldid + "&mode=" + m;
+                    break;
+                default:
+            }
+            SetState( state_t.NORM );
+            ShowLoader();
+            GetJsonP( s );
+            Tick();
+        }
+
+        /* ========== Send and receive data ========== */
+        function DoJson( data ) {
+
+            /* reset the comms timout */
+            commsticks = -1;
+
+            /* check if data from server is OK */
+            if ( data.success == true ) {
+                if ( data.field == fieldid ) {
+                    /* Set values */
+                    scoreval1 = data.score1;
+                    scoreval2 = data.score2;
+                    timerval = data.matchtime;
+                    timermode = data.timer;
+                    clock = data.clock;
+                    dual = data.dual;
+                    swap = data.swap;
+                    bright = data.bright;
+                    signal = data.signal;
+                    battery = data.battery;
+
+                    /* Update the UI */
+                    Score1( scoreval1 );
+                    Score2( scoreval2 );
+                    Timer();
+                    /* Mode(); /* its annoying if the UI resets while you are on this screen */
+                    Signal();
+                    Battery();
+
+                    HideLoader();
+                    return true;
+                }
+                else {
+                    Error( "Error processing data" );
+                    HideLoader();
+                    return false;
+                }
+            }
+            Error( "Error sending to scoreboard" );
+            HideLoader();
+            return false;
+        }
+        /* GetJSONP actually sends the request for JSONP data */
+        /* This should be the only function that requests data */
+        function GetJsonP( str ) {
+            var url_str = "http://scoreboard.local/" + str + "&jsonp=DoJson";
+            var oldt = Elem( "jsonp" );
+            if ( oldt != null )
+                oldt.parentNode.removeChild( oldt );
+            var newt = document.createElement( 'script' );
+            newt.src = url_str;
+            newt.id = "jsonp";
+            Elem( "idheader" ).appendChild( newt );
+            commsticks = 0;
+            refreshticks = 0;
+        }
+        /* Trigger a background refresh of data held by the web page */
+        function GetRefresh( silent ) {
+            var str = "json?field=" + fieldid;
+            if ( silent )
+                ShowLoaderSmall();
+            else
+                ShowLoader();
+            GetJsonP( str );
+        }
+    </script>
+    <header id="idheader">
+        <span id="idfield" class="centre">FIELD 1</span>
+        <table class="wide">
+            <tbody>
+                <tr>
+                    <td class="shrink">
+                        <btn class="btn square dark" onclick="GetRefresh(false)">Refresh</btn>
+                    </td>
+                    <td class="shrink declutter">
+                        <div class="clBattery">
+                            <div id="idBatteryBody">
+                                <div id="idBatteryIndicator"></div>
+                            </div>
+                            <div class="clBatteryEnd">
+                                <div></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="shrink declutter">
+                        <div id="idloadersmall" class="progress sml">
+                            <div>&nbsp;</div>
+                        </div>
+                    </td>
+                    <td class="expand">
+                        &nbsp;
+                    </td>
+                    <td class="shrink declutter">
+                        <ul id="idbar">
+                            <li class="bar0">
+                                <div id="idbar0"></div>
+                            </li>
+                            <li class="bar1">
+                                <div id="idbar1"></div>
+                            </li>
+                            <li class="bar2">
+                                <div id="idbar2"></div>
+                            </li>
+                            <li class="bar3">
+                                <div id="idbar3"></div>
+                            </li>
+                            <li class="bar4">
+                                <div id="idbar4"></div>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="shrink">
+                        <p class="btn square dark" onclick="ShowMode()">Settings</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+    <div class="outer" id="idscorediv">
+        <div class="inner" onclick="ShowScore(1)">
+            <p class="nam" id="idname1">TEAM 1</p>
+            <p class="num" id="idscore1">0</p>
+        </div>
+        <div class="inner logo">
+            <img alt="Wynnum Bugs Logo" src="logo.jpg">
+        </div>
+        <div class="inner" onclick="ShowScore(2)">
+            <p class="nam" id="idname2">TEAM 2</p>
+            <p class="num" id="idscore2">0</p>
+        </div>
+    </div>
+    <div class="outer" id="idtimerdiv">
+        <div class="inner" onclick="ShowTimer()">
+            <p class="nam">MATCH TIMER</p>
+            <p class="num" id="idtimer">00:00</p>
+        </div>
+    </div>
+    <div class="outer" id="idtempdiv">
+        <div class="inner">
+            <p class="nam" id="idtempnam">TEAM</p>
+            <table>
+                <tr>
+                    <td><div class="btn round light" onclick="Add(-1)">-</div></td>
+                    <td><div class="num" id="idtempnum">0</div></td>
+                    <td><div class="btn round light" onclick="Add(1)">+</div></td>
+                </tr>
+                <tr>
+                    <td><div class="btn round light" onclick="Add(-5)">-</div></td>
+                    <td><div class="nam">TRY (5)</div></td>
+                    <td><div class="btn round light" onclick="Add(5)">+</div></td>
+                </tr>
+                <tr>
+                    <td><div class="btn round light" onclick="Add(-3)">-</div></td>
+                    <td><div class="nam">GOAL (3)</div></td>
+                    <td><div class="btn round light" onclick="Add(3)">+</div></td>
+                </tr>
+                <tr>
+                    <td><div class="btn round light" onclick="Add(-2)">-</div></td>
+                    <td><div class="nam">CONVERT (2)</div></td>
+                    <td><div class="btn round light" onclick="Add(2)">+</div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="outer" id="idmodediv">
+        <table class="inner padded">
+            <tbody>
+                <tr>
+                    <td colspan="3" class="nam">SETTINGS</td>
+                </tr>
+                <tr class="disable">
+                    <td class="left">
+                        <p class="nam">Clock</p>
+                    </td>
+                    <td class="btn-grp shrink">
+                        <input type="radio" name="rbclck" id="rbclckof">
+                        <label class="btn square dark sml" for="rbclckof" onclick="Tick()">Off</label>
+                        <input type="radio" name="rbclck" id="rbclckon">
+                        <label class="btn square dark sml" for="rbclckon" onclick="Tick()">On</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <p class="nam">Swap</p>
+                    </td>
+                    <td class="btn-grp shrink">
+                        <input type="radio" name="rbswap" id="rbswapof">
+                        <label class="btn square dark sml" for="rbswapof" onclick="Tick()">Off</label>
+                        <input type="radio" name="rbswap" id="rbswapon">
+                        <label class="btn square dark sml" for="rbswapon" onclick="Tick()">On</label>
+                    </td>
+                </tr>
+                <tr class="disable">
+                    <td class="left">
+                        <p class="nam">Dual</p>
+                    </td>
+                    <td class="btn-grp shrink">
+                        <input type="radio" name="rbdual" id="rbdualof">
+                        <label class="btn square dark sml" for="rbdualof" onclick="Tick()">Off</label>
+                        <input type="radio" name="rbdual" id="rbdualon">
+                        <label class="btn square dark sml" for="rbdualon" onclick="Tick()">On</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <p class="nam">Brightness</p>
+                    </td>
+                    <td class="btn-grp">
+                        <input id="idbright" min="0" max="6" step="1" value="6" type="range" onclick="Tick()">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <p class="nam">Signal</p>
+                    </td>
+                    <td>
+                        <p class="nam" id="idsignal">0/5</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <p class="nam">Battery</p>
+                    </td>
+                    <td>
+                        <p class="nam" id="idbattery">&nbsp;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer" id="idfooter1">
+        <div class="centre lge">
+            <div class="btn square dark med" onclick="ShowNorm()">Back</div>
+            <div class="btn square dark med" onclick="SendMsg()">Set</div>
+        </div>
+    </div>
+    <div class="footer" id="idfooter2">
+        <div class="centre lge">
+            <input type="radio" name="rbtimer" id="rbstop">
+            <label class="btn square dark med" for="rbstop" onclick="SendMsg( 'stop' )">Stop</label>
+
+            <input type="radio" name="rbtimer" id="rbpause">
+            <label class="btn square dark med" for="rbpause" onclick="SendMsg( 'pause' )">Pause</label>
+
+            <input type="radio" name="rbtimer" id="rbrun">
+            <label class="btn square dark med" for="rbrun" onclick="SendMsg( 'run' )">Run</label>
+        </div>
+    </div>
+    <div class="footer" id="idfooter3">
+        <span id="iderrormsg" class="centre">&nbsp;</span>
+    </div>
+    <div id="idfade"></div>
+    <div id="idmodal" class="centre">
+        <div class="progress">
+            <div>&nbsp;</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Scoreboard</title>
+</head>
+<body>
+    <h1>Scoreboard</h1>
+    <p>Please open <a href="http://scoreboard.local">http://scoreboard.local</a> in your web browser</p>
+    <p id="redirect">Redirecting in <span id="counter">3</span> seconds</p>
+    <script>
+        var count = 3;
+        setInterval( function () {
+            count = count - 1;
+            if ( count > 0 ) {
+                var div = document.querySelector( "#counter" );
+                div.textContent = count;
+            } else  if ( count == 0 ) {
+                var div = document.querySelector( "#redirect" );
+                div.textContent = "";
+                location.href = "http://scoreboard.local";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

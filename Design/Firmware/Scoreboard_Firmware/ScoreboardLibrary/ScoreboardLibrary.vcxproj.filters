@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ScoreboardLibrary.ino" />
+    <None Include="..\..\Arduino\libraries\Scoreboard\library.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Arduino\libraries\Scoreboard\keywords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Scoreboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardButtonClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardDMD2Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardI2CClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardIOClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardLEDClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardPowerClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardRadioClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardULCDClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardWebClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardWebContent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_FONT14.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_FONT14x6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_NUMERAL16x7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_NUMERAL44x24.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_NUMERAL44x28.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Arduino\libraries\Scoreboard\src\Font_SystemFont5x7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.ScoreboardLibrary.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardButtonClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardDMD2Class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardI2CClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardIOClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardLEDClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardPowerClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardRadioClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardULCDDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardULCDEvents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arduino\libraries\Scoreboard\src\ScoreboardWebClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
