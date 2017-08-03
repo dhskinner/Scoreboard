@@ -11020,10 +11020,10 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <net name="D0" class="0">
 <segment>
 <pinref part="NANO" gate="G$1" pin="RX0"/>
-<wire x1="137.16" y1="124.46" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="124.46" x2="147.32" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="124.46" x2="149.86" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="124.46" x2="149.86" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="1"/>
-<wire x1="147.32" y1="119.38" x2="167.64" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="119.38" x2="167.64" y2="119.38" width="0.1524" layer="91"/>
 <label x="144.78" y="124.46" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -11035,13 +11035,9 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 <net name="D1" class="0">
 <segment>
 <pinref part="NANO" gate="G$1" pin="TX1"/>
-<wire x1="137.16" y1="121.92" x2="144.78" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="121.92" x2="144.78" y2="127" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="127" x2="149.86" y2="127" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="127" x2="149.86" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="149.86" y1="121.92" x2="167.64" y2="121.92" width="0.1524" layer="91"/>
-<label x="144.78" y="127" size="1.778" layer="95"/>
+<wire x1="137.16" y1="121.92" x2="167.64" y2="121.92" width="0.1524" layer="91"/>
+<label x="144.78" y="121.92" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="187.96" y1="30.48" x2="193.04" y2="30.48" width="0.1524" layer="91"/>
