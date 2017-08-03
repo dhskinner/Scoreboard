@@ -1,0 +1,69 @@
+* PRODUCTION *
+To produce final production files:
+	- turn off debugging statemenmts (SERIAL_DEBUG)
+	- set radio channel
+	- check radio power (0dbm)
+	- check if DMD timers for led panel are auto or manual
+	- check the hardware config for master
+
+* HARDWARE *
+- add 100K pullup resistor across 3 x LED (from 3V3 line to IO pin) http://www.ti.com/product/PCF8574/datasheet/application_and_implementation#SCPS1972306
+- set the RF power back to high (add some capacitors to see if it fixes the power issue)
+- add a piezo buzzer for low power warning
+
+* DEBUGGING *
+- web controller causes the timer on field 2 to flash when starting in dual screen
+- if controller is turned on and signal present, there is a very slight red flash
+- brightness on dual screen for screen 2 doesn't work - only screen 1
+- panel heartbeat LED doesn't work
+- fix the hardware test sketch
+
+* FEATURES TO IMPLEMENT
+- look at power management for the web controller / sleep the ESP8266
+- make the font14 16 pixels high
+- make the font44 46 pixels high
+- save the score and match start time in eeprom or flash (reset to zero after a couple of hours)
+- add a set the real time clock option
+
+* ULCD (DEPRECATED) *
+- check battery voltage divider - measure with a multimeter
+- some 'back' buttons are red and some are green - make them all same same
+- updates after setting the score are a bit flickery
+- fix the spinner - its still crap
+- add a battery indicator, wireless and offline on each page
+- look at power management / low power mode / dim the ulcd etc
+- make a clock icon
+- the garbage bin on field 1 and field 2 seems to be a toggle / after erasing it needs to go back to normal (not grey)
+- fix the flicker when you set the score
+- see if can get rid of 'mounting' on startup
+- convert the clock on the ulcd to run automatically using a ulcd timer event?
+- add sounds
+- work out how to disable field 2 if unused?
+
+* DONE *
+- add web interface or a relay box from the controller
+- add more controllers - 1 to n
+- add indicator if controller is turned on but no signal present (red flash)
+- set different kinds of scoreboard types ('real' board, mini etc)
+- the battery icon occasionally goes out of range
+- why does the splash screen flip to the main page so quickly?
+- swap around the controls on the main page because they look silly
+- fix the brightness
+- the brightness slider seems to be 0-7 = make it 0-6
+- make a settings icon
+- something is screwy with field 2 scores on dual field mode
+- fix the battery indicator
+- fix the slight time delay between clocks
+- clean out the serial code / convert to run on a nano
+- fix the timer reset "Yes" button so it goes back to the timer page
+- fix the scoreboard reset button so it actually does does something
+- check the small buttons on Field1 and Field 2 aren;t obscured
+- put all the print and utility functions in a header
+- add an offline mode
+- add 3 digits up to 199
+- add a bugs splash screen
+- fix the skip button
+- field 1 and field 2 pages - change visitors to guests
+- all pages - put the back button in the same place and same color
+- one of the little clock buttons is blue, not green
+- change the backcolor on the sliders to something like black

@@ -19,11 +19,11 @@ extern "C" {
 #endif
 
 // Add SERIAL_DEBUG or CONSOLE_DEBUG
-#define SERIAL_DEBUG
+// #define SERIAL_DEBUG
 // Remember to initialise the "Serial" or "Console" object in your setup code with UBEGIN
 
-#define UHEARTBEAT_BEGIN(x)		pinMode ( x, OUTPUT )
-#define UHEARTBEAT_UPDATE(x)	digitalWrite( x, (digitalRead(x) == HIGH ? LOW : HIGH))
+#define UHEARTBEAT_BEGIN(pin)		pinMode ( pin , OUTPUT )
+#define UHEARTBEAT_UPDATE(pin, interval)	static unsigned long updateMillis = millis(); if (millis() > updateMillis){ updateMillis += interval ; digitalWrite( pin , (digitalRead( pin ) == HIGH ? LOW : HIGH)); }
 #define ULEDBEGIN				pinMode(LED_BUILTIN, OUTPUT);
 #define ULEDBLINK(x)			for(uint8_t i = 0; i < x; i++){digitalWrite(LED_BUILTIN, HIGH);delay(10);digitalWrite(LED_BUILTIN, LOW);delay(150);}
 #define ULEDON()				digitalWrite(LED_BUILTIN,HIGH)
@@ -33,7 +33,7 @@ extern "C" {
 
 // Serial debugging macros for Arduino
 #if defined (SERIAL_DEBUG)
-#define UBEGIN(x)			Serial.begin(x); while (!Serial) {}	//UDEBUGBEGIN is a macro, debug begin serial
+#define UBEGIN(x)			Serial.begin(x); 					//UDEBUGBEGIN is a macro, debug begin serial
 #define UPRINT(...)			Serial.print(__VA_ARGS__)			//UPRINT is a macro, debug print
 #define UPRINTLN(...)		Serial.println(__VA_ARGS__)			//UPRINTLN is a macro, debug print with new line
 #define UPRINTF(...)		Serial.printf(__VA_ARGS__)

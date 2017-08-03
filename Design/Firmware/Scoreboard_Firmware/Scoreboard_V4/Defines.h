@@ -39,7 +39,7 @@ typedef enum {MESSAGE_NULL = 0, BROADCAST, GET_STATE, SET_SCORE, SET_TIMER, SET_
 #endif
 
 #ifdef TEST
-  #define DEBUG_
+  #define DEBUG
   #define DEBUG_VERBOSE_
 #endif
 
@@ -49,6 +49,7 @@ typedef enum {MESSAGE_NULL = 0, BROADCAST, GET_STATE, SET_SCORE, SET_TIMER, SET_
 
 #define RF24_SCOREBOARD_ADDRESS  1    // RF24 address for the scoreboard master 
 #define RF24_CONTROLLER_ADDRESS  2    // RF24 address for the controller 
+#define RF24_BROADCAST_ADDRESS	 2    // RF24 address for the controller for general broadcast
 #define RF24_LISTEN_TIMEOUT      200  // timeout in milliseconds (mainly effects the controller)
 #define RF24_CHANNEL             110  // channel 1 to 128 - check which channel is clear before selecting
 #define RF24_RETRIES             5    // number of retries per transmission

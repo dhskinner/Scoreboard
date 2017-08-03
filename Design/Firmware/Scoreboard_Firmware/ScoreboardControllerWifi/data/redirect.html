@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Scoreboard</h1>
-    <p>Please open <a href="http://scoreboard.local">http://scoreboard.local</a> in your web browser</p>
+    <p>Please open <a href="http://scoreboard">http://scoreboard</a> in your web browser</p>
     <p id="redirect">Redirecting in <span id="counter">3</span> seconds</p>
     <script>
         var count = 3;
@@ -18,7 +18,7 @@
             } else  if ( count == 0 ) {
                 var div = document.querySelector( "#redirect" );
                 div.textContent = "";
-                location.href = "http://scoreboard.local";
+                location.href = "http://scoreboard";
             }
         }, 1000);
     </script>

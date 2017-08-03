@@ -61,10 +61,10 @@ static void inline scan_running_dmds();
 */
 ISR(TIMER1_OVF_vect)
 {
-  static uint8_t skip_isrs = 0;
-  skip_isrs = (skip_isrs + 1) % 2;
-  if(skip_isrs)
-    return;
+//  static uint8_t skip_isrs = 0;
+//  skip_isrs = (skip_isrs + 1) % 2;
+//  if(skip_isrs)
+//    return;
   scan_running_dmds();
 }
 

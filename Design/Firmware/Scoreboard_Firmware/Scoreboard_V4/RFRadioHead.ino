@@ -12,7 +12,7 @@ uint8_t rf24From;                                        // address of sender fo
 time_t  rf24MessageReceived = 0;                         // time the last incoming message was received
 
 // ---------------------------------------------------------------------------------
-boolean RF_Start()
+boolean RFStart()
 {
   // disable all other SPI devices
   for ( uint8_t i = 0; i < sizeof ( spi ); i++ )
@@ -119,7 +119,7 @@ boolean RFReceive()
 }
 // ---------------------------------------------------------------------------------
 // Process any waiting packets
-void RF_Process()
+void RFProcess()
 {
   // check if the controller is in offline mode
   if ( offlineFlag == true )
@@ -144,7 +144,7 @@ void RF_Process()
 
     // respond to sender with the current state (ignore the rest of message)
     case GET_STATE:
-      RF_Broadcast ( rf24Datagram.fieldID );
+      RFBroadcast ( rf24Datagram.fieldID );
       break;
 
     // set the new values, then respond to sender with the current state (ignore the rest of message)
@@ -154,8 +154,8 @@ void RF_Process()
       scoreboard[rf24Datagram.fieldID].SetDatagram ( &rf24Datagram );
 
 #ifdef SCOREBOARD_MASTER
-      I2C_Broadcast ( rf24Datagram.fieldID );
-      RF_Broadcast ( rf24Datagram.fieldID );
+      I2CBroadcast ( rf24Datagram.fieldID );
+      RFBroadcast ( rf24Datagram.fieldID );
 #endif
 
 #ifdef ULCD
@@ -172,7 +172,7 @@ void RF_Process()
 }
 // ---------------------------------------------------------------------------------
 // Broadcast the current scoreboard state
-void RF_Broadcast ( uint8_t fieldID )
+void RFBroadcast ( uint8_t fieldID )
 {
   RFSend ( BROADCAST, RH_BROADCAST_ADDRESS, fieldID );
 }

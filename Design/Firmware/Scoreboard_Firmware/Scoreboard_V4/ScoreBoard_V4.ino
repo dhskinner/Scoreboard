@@ -8,7 +8,7 @@
  * whats with the flicker when you set the score?
  * some 'back' buttons are red and some are green - make them all same same
  * see if can get rid of 'mounting' on startup
- * Brightness on dual screen for screen 2 doesn;t work - only screen 1 
+ * Brightness on dual screen for screen 2 doesn;t work - only screen 1
  *
  * ULCD
  * updates after setting the score are a bit flickery
@@ -52,43 +52,47 @@
  * one of the little clock buttons is blue, not green
  * change the backcolor on the sliders to something like black
  */
+#ifndef DEBUG
+#define DEBUG
+#endif
+
 #include <Arduino.h>
 #include "Defines.h"
 #include "Config.h"
-#include "Scoreboard.h"
+#include "ScoreboardOriginal.h"
 #include "Utility.h"
 #include <SPI.h>                  // Arduino core library 
 #include <Wire.h>                 // Arduino core library 
 #include <Streaming.h>            // Arduino core library 
-#include <Time.h>                 // Download from http://www.pjrc.com/teensy/td_libs_Time.html  
+#include <TimeLib.h>              // Download from http://www.pjrc.com/teensy/td_libs_Time.html  
 #include <genieArduino.h>         // Download from https://github.com/4dsystems/ViSi-Genie-Arduino-Library
 #ifdef RF_RADIOHEAD 
-  #include <RHReliableDatagram.h>   // Download from http://www.airspayce.com/mikem/arduino/RadioHead/
-  #include <RH_NRF24.h>             // Download from http://www.airspayce.com/mikem/arduino/RadioHead/
+#include <RHReliableDatagram.h>   // Download from http://www.airspayce.com/mikem/arduino/RadioHead/
+#include <RH_NRF24.h>             // Download from http://www.airspayce.com/mikem/arduino/RadioHead/
 #endif
 #ifdef I2C_TRANSFER
-  #include <EasyTransferI2C.h>      // Download from https://github.com/madsci1016/Arduino-EasyTransfer
+#include <EasyTransferI2C.h>      // Download from https://github.com/madsci1016/Arduino-EasyTransfer
 #endif
 #ifdef I2C_RTC
-  #include <DS1307RTC.h>            // Download from https://www.pjrc.com/teensy/td_libs_DS1307RTC.html
+#include <DS1307RTC.h>            // Download from https://www.pjrc.com/teensy/td_libs_DS1307RTC.html
 #endif
 #ifdef LED_SEGMENT
-  #include <LedControlMS.h>         // Download from http://www.instructables.com/id/LED-Matrix-with-Arduino/step2/Arduino-Library/
+#include <LedControlMS.h>         // Download from http://www.instructables.com/id/LED-Matrix-with-Arduino/step2/Arduino-Library/
 #endif
 #ifdef LED_DMD2
-  #include <DMD2.h>				  // Download from https://github.com/freetronics/DMD2
-  #include "NUMERAL44x28.h"		  // Fonts
-  #include "NUMERAL44x24.h"
-  #include "FONT14.h"
+#include <DMD2.h>				  // Download from https://github.com/freetronics/DMD2
+#include "NUMERAL44x28.h"		  // Fonts
+#include "NUMERAL44x24.h"
+#include "FONT14.h"
 #endif  
 #ifdef I2C_BATTERY
-  #include <LiFuelGauge.h>		  // Download from https://github.com/pAIgn10/LiFuelGauge
+#include <LiFuelGauge.h>		  // Download from https://github.com/pAIgn10/LiFuelGauge
 #endif
 #ifdef DEBUG
-  #include "Printf.h"
+#include "Printf.h"
 #endif
 #ifdef TEST
-//  #include <TimerOne.h>
+ //  #include <TimerOne.h>
 #endif
 
 // ---------------------------------------------------------------------------------
@@ -98,128 +102,165 @@ boolean			dmdStartupFlag = true;	// flag used to indicate startup mode (used by 
 Scoreboard      scoreboard[FIELDS];     // scoreboard objects - one per field
 // ---------------------------------------------------------------------------------
 
-void setup ( void )
+void setup(void)
 {
-  // initialize the scoreboard objects with their field ID
-  for ( uint8_t id = 0; id < FIELDS; id++ )
-    scoreboard[id].ID ( id );
+	bool result;
+
+#ifdef DEBUG
+	Serial.begin(115200);
+	Serial << endl << F("Starting in mode ");
+#ifdef SCOREBOARD_MASTER
+	Serial << F("master") << endl;
+#elif defined (SCOREBOARD_SLAVE)
+	Serial << F("slave") << endl;
+#elif defined (SCOREBOARD_CONTROLLER)
+	Serial << F("controller") << endl;
+#endif
+#endif
+
+	// initialize the scoreboard objects with their field ID
+	for (uint8_t id = 0; id < FIELDS; id++)
+		scoreboard[id].ID(id);
 
 #ifdef RF_RADIOHEAD
-  RF_Start();
+	result = RFStart();
+#ifdef DEBUG
+	Serial << F("RF Start ") << (result ? F("OK") : F("Fail")) << endl;
+#endif
 #endif
 
 #ifdef I2C_TRANSFER
-  I2C_Transfer_Start();
+	I2C_Transfer_Start();
+#ifdef DEBUG
+	Serial << F("I2C Start ") << endl;
+#endif
 #endif
 
 #ifdef IO_BATTERY
-  IO_Battery_Start();
+	IO_Battery_Start();
 #endif
 
 #ifdef I2C_BATTERY
-  I2C_Battery_Start();
+	I2C_Battery_Start();
 #endif
 
 #ifdef I2C_RTC
-  I2C_RTC_Start();
+	I2C_RTC_Start();
+#ifdef DEBUG
+	Serial << F("I2C RTC Start ") << (result ? F("OK") : F("Fail")) << endl;
+#endif
 #endif
 
 #ifdef LED_DMD2
-  DMD_Start();
+	DMD_Start();
 #endif
 
 #ifdef LED_SEGMENT
-  LED_Start();
+	LED_Start();
 #endif
 
 #ifdef ULCD
-  ULCD_Start();
-  ULCD_Update ( true );
+	ULCD_Start();
+	ULCD_Update(true);
 #endif
 
 #ifdef TEST
-  TestStart();
+	TestStart();
 #endif
 
-// Test the scoreboard
+	// Test the scoreboard
 #ifdef SCOREBOARD_MASTER
 
   // short delay so that the slaves can fire up
-  delay ( MASTER_STARTUP_DELAY );
-	
-  // set the score
-  scoreboard[FIELD1].Score ( 199, 199 );
-  scoreboard[FIELD2].Score ( 199, 199 );
-  I2C_Broadcast ( FIELD1 );
-  RF_Broadcast ( FIELD1 );
-  I2C_Broadcast ( FIELD2 );
-  RF_Broadcast ( FIELD2 );
+	delay(MASTER_STARTUP_DELAY);
+#ifdef DEBUG
+	Serial << F("Sending initial scores") << endl;
+#endif
 
-  // short delay again
-  delay ( MASTER_STARTUP_DELAY );
+	// set the score
+	scoreboard[FIELD1].Score(199, 199);
+	scoreboard[FIELD2].Score(199, 199);
+	I2CBroadcast(FIELD1);
+	RFBroadcast(FIELD1);
+	I2CBroadcast(FIELD2);
+	RFBroadcast(FIELD2);
 
-  // Set the scores back to zero
-  scoreboard[FIELD1].Score ( 0,0 );
-  scoreboard[FIELD2].Score ( 0,0 );
-  I2C_Broadcast ( FIELD1 );
-  RF_Broadcast ( FIELD1 );
-  I2C_Broadcast ( FIELD2 );
-  RF_Broadcast ( FIELD2 );
+	// short delay again
+	delay(MASTER_STARTUP_DELAY);
+#ifdef DEBUG
+	Serial << F("Sending zero scores") << endl;
+#endif
+
+	// Set the scores back to zero
+	scoreboard[FIELD1].Score(0, 0);
+	scoreboard[FIELD2].Score(0, 0);
+	I2CBroadcast(FIELD1);
+	RFBroadcast(FIELD1);
+	I2CBroadcast(FIELD2);
+	RFBroadcast(FIELD2);
+
+#ifdef DEBUG
+	Serial << F("Startup completed") << endl;
+#endif
 #endif
 }
 
 // ---------------------------------------------------------------------------------
-void loop ( void )
+void loop(void)
 {
-  // Process once per loop
+	// Process once per loop
 #ifdef RF_RADIOHEAD
-  RF_Process();
+	RFProcess();
 #endif
 
 #ifdef ULCD
-  ULCD_Process();
+	ULCD_Process();
 #endif
 
 #ifdef I2C_TRANSFER
-  I2C_Process();
+	I2C_Process();
 #endif
 
-  // Process once per second
-  static time_t updateTime;
-  if ( now() != updateTime )
-  {
+	// Process once per second
+	static time_t updateTime;
+	if (now() != updateTime)
+	{
 #ifdef ULCD
-    ULCD_Update ( false );
+		ULCD_Update(false);
 #endif
 
-#ifdef I2C_TRANSFER
-//    I2C_Broadcast ( second() %2 == 0 ? FIELD1 : FIELD2 );
+#if defined (I2C_TRANSFER) && defined (SCOREBOARD_MASTER)
+		I2CBroadcast(second() % 2 == 0 ? FIELD1 : FIELD2);
 #endif
 
 #ifdef LED_DMD2
-    DMD_Update();
+		DMD_Update();
 #endif
 
 #ifdef LED_SEGMENT
-    LED_Update ( 0 );
+		LED_Update(0);
 #endif
 
 #ifdef SCOREBOARD_MASTER
-    RF_Broadcast ( now() % 2 ); // toggle the broadcast between scoreboard 1 and 2 each second
+		RFBroadcast(now() % 2); // toggle the broadcast between scoreboard 1 and 2 each second
 #endif
-    updateTime = now();
-  }
+		updateTime = now();
 
+#ifdef DEBUG
+		Serial << F(".");
+#endif
+	}
 
-  #ifdef TEST
+#ifdef TEST
 	// Process once per second
 	static time_t testUpdateTime;
-	if ( now () != testUpdateTime )
+	if (now() != testUpdateTime)
 	{
-	  TestProcess();
-      testUpdateTime = now();
-    }
-  #endif
+		TestProcess();
+
+		testUpdateTime = now();
+	}
+#endif
 }
 // ---------------------------------------------------------------------------------
 

@@ -55,7 +55,7 @@ void LED_Update(uint8_t fieldID)
   if ( ledClock )
     LEDDisplayTimeHHMMSS( now(), 0 );    
   else
-    LEDDisplayTimeMMSS( scoreboard[fieldID].Time(), 2 );
+    LEDDisplayTimeMMSS( scoreboard[fieldID].MatchTime(), 2 );
 }
 // ---------------------------------------------------------------------------------
 // Display up to 99 minutes and 59 seconds

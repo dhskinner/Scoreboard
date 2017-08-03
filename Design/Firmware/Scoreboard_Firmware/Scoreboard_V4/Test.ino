@@ -23,21 +23,19 @@ void TestStart()
   //scoreboard[FIELD2].Run();
   
   // Brightness
-  scoreboard[FIELD1].SetFlag( FLAG_BRIGHTNESS_1 );
-  scoreboard[FIELD2].SetFlag( FLAG_BRIGHTNESS_1 );
+  //scoreboard[FIELD1].SetFlag( FLAG_BRIGHTNESS_1 );
+  //scoreboard[FIELD2].SetFlag( FLAG_BRIGHTNESS_1 );
+
+#ifdef DEBUG
+  Serial << F("Starting in test mode") << endl;
+#endif
 }
 
 void TestProcess()
 {
-  // Increment the scores
-  //scoreboard[FIELD1].Score0 ( scoreboard[FIELD1].Score0() < MAX_SCORE ? scoreboard[FIELD1].Score0() + 1 : 0 );
-  //scoreboard[FIELD1].Score1 ( scoreboard[FIELD1].Score1() < MAX_SCORE ? scoreboard[FIELD1].Score1() + 1 : 0 );
-  //scoreboard[FIELD2].Score0 ( scoreboard[FIELD2].Score0() < MAX_SCORE ? scoreboard[FIELD2].Score0() + 1 : 0 );
-  //scoreboard[FIELD2].Score1 ( scoreboard[FIELD2].Score1() < MAX_SCORE ? scoreboard[FIELD2].Score1() + 1 : 0 );
-  
   //Brightness
-  scoreboard[FIELD1].Brightness( scoreboard[FIELD1].Brightness() < 6 ? scoreboard[FIELD1].Brightness() + 1 : 0 );
-  scoreboard[FIELD2].Brightness( scoreboard[FIELD2].Brightness() < 6 ? scoreboard[FIELD2].Brightness() + 1 : 0 );
+  //scoreboard[FIELD1].Brightness( scoreboard[FIELD1].Brightness() < 6 ? scoreboard[FIELD1].Brightness() + 1 : 0 );
+  //scoreboard[FIELD2].Brightness( scoreboard[FIELD2].Brightness() < 6 ? scoreboard[FIELD2].Brightness() + 1 : 0 );
 
 /*
   uint8_t b = scoreboard[FIELD1].Brightness();
@@ -45,15 +43,20 @@ void TestProcess()
   int t = b * 43;
   t = constrain ( t, 0, 255 );
 */
-  	
-  //result = RFSend ( SET_SCORE, RF24_SCOREBOARD_ADDRESS, FIELD1 );
-  //result = RFSend ( SET_SCORE, RF24_SCOREBOARD_ADDRESS, FIELD2 );
 
-  result = RFSend ( SET_MODE_FLAGS, RF24_SCOREBOARD_ADDRESS, FIELD1 );
-  result = RFSend ( SET_MODE_FLAGS, RF24_SCOREBOARD_ADDRESS, FIELD2 );
+  //result = RFSend ( SET_MODE_FLAGS, RF24_SCOREBOARD_ADDRESS, FIELD1 );
+  //result = RFSend ( SET_MODE_FLAGS, RF24_SCOREBOARD_ADDRESS, FIELD2 );
   
+  // Increment the scores
+  scoreboard[FIELD1].Score0(scoreboard[FIELD1].Score0() < MAX_SCORE ? scoreboard[FIELD1].Score0() + 1 : 0);
+  scoreboard[FIELD1].Score1(scoreboard[FIELD1].Score1() < MAX_SCORE ? scoreboard[FIELD1].Score1() + 2 : 0);
+  //scoreboard[FIELD2].Score0 ( scoreboard[FIELD2].Score0() < MAX_SCORE ? scoreboard[FIELD2].Score0() + 1 : 0 );
+  //scoreboard[FIELD2].Score1 ( scoreboard[FIELD2].Score1() < MAX_SCORE ? scoreboard[FIELD2].Score1() + 1 : 0 );
+
   //Broadcast the new scores
-  //I2C_Broadcast ( FIELD1 );
-  //I2C_Broadcast ( FIELD2 );
+  //result = RFBroadcast(FIELD1);
+  //result = RFSend(SET_SCORE, RF24_SCOREBOARD_ADDRESS, FIELD2);
+  //I2CBroadcast ( FIELD1 );
+  //I2CBroadcast ( FIELD2 );
 }
 #endif

@@ -12,19 +12,19 @@ boolean I2C_RTC_Start()
   {
     tm = RTC.get();
     setTime ( tm );
-    /*
+    
     #ifdef DEBUG
     	Serial << F("Real time clock detected ");
     	printTime(tm);
     	Serial << F("Synched system time to   ");
     	printTime(tm);
     #endif
-    */
+    
     return true;
   }
   else
   {
-    /*
+    
     #ifdef DEBUG
     	if (RTC.chipPresent())
     	  Serial.println(F("Real time clock is stopped. Please run the SetTime example to initialize the time and begin running."));
@@ -34,7 +34,7 @@ boolean I2C_RTC_Start()
     	Serial.print(F("Current system time is "));
     	printTime(now());
     #endif
-    */
+    
     return false;
   }
 }

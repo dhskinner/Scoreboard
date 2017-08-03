@@ -29,7 +29,7 @@ void I2C_Transfer_Start()
 #endif
 }
 // ---------------------------------------------------------------------------------
-void I2C_Broadcast ( uint8_t fieldID )
+void I2CBroadcast ( uint8_t fieldID )
 {
 #ifdef SCOREBOARD_MASTER
   // broadcast the scoreboard datagram
@@ -46,6 +46,10 @@ void I2C_Process()
   //check and see if a data packet has come in from the master
   if ( i2c.receiveData() )
   {
+#ifdef DEBUG
+	  Serial << endl << F(" Received Field:") << i2c_datagram.fieldID << F("\t Score0:") << i2c_datagram.score0 << F("\t Score1:") << i2c_datagram.score1;
+#endif
+
     // send the data to the scoreboards (each scoreboard will check the ID)
     for ( uint8_t id = 0; id < FIELDS; id++ )
       scoreboard[id].SetDatagram ( &i2c_datagram );

@@ -5,14 +5,14 @@
 // Hardware configuration (see below for role specific config)
 // ---------------------------------------------------------------------------------
 // Mode
-#define SCOREBOARD_CONTROLLER		// Define one of SCOREBOARD_MASTER, SCOREBOARD_SLAVE, or SCOREBOARD_CONTROLLER
-#define DMD_ROLE				2	// If defined as a slave, you also need to specify which type of slave:
+#define SCOREBOARD_SLAVE			// Define one of SCOREBOARD_MASTER, SCOREBOARD_SLAVE, or SCOREBOARD_CONTROLLER
+#define DMD_ROLE				1	// If defined as a slave, you also need to specify which type of slave:
 									// 0 = test config with a single DMD panel (only displays field 1)
 									// 1 = left hand side (2 panels wide x 4 high)
 									// 2 = right hand side (2 panels wide x 4 high)
 // Test mode
 #ifndef SCOREBOARD_SLAVE
-  #define TEST_  				// Enter test mode (or turn this off with TEST_OFF)
+  #define TEST  				// Enter test mode (or turn this off with TEST_OFF)
 #endif
 
 // Fields
@@ -35,7 +35,7 @@
   #define MASTER_STARTUP_DELAY	3000 // startup delay when the master is firing up
   
 #elif defined(SCOREBOARD_SLAVE)
-  #define NANO                      // UNO, UNO_SHIELD, NANO, MEGA or ETHERMEGA
+  #define UNO_SHIELD                      // UNO, UNO_SHIELD, NANO, MEGA or ETHERMEGA
   #define LED_DMD2
   #define I2C_TRANSFER
   #define SLAVE_TEST_PATTERN_DELAY	30  // delay to control timing of the DMD test pattern
