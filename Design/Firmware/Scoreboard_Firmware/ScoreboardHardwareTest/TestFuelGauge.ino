@@ -17,12 +17,13 @@ void StartFuelGauge()
 
 	// Sets the Alert Threshold to 10% of full capacity
 	gauge.setAlertThreshold(10);
-	Serial.println(String(F("LIPO alert threshold is set to ")) + gauge.getAlertThreshold() + F("%"));
+	Serial.println(millis() + String(F("\tLIPO alert threshold is set to ")) + gauge.getAlertThreshold() + F("%"));
 }
 
 void ProcessFuelGauge()
 {
-	Serial.print(F("LIPO SOC: "));
+	Serial.print(millis());
+	Serial.print(F("\tLIPO SOC: "));
 	Serial.print(gauge.getSOC());  // Gets the battery's state of charge
 	Serial.print(F("%, VCELL: "));
 	Serial.print(gauge.getVoltage());  // Gets the battery voltage
@@ -31,7 +32,8 @@ void ProcessFuelGauge()
 	if (lowPowerFlag || 
 		(gauge.getSOC() < 10.0 && gauge.getVoltage() < 3.1) )
 	{
-		Serial.println(F("Warning, low power - entering sleep mode"));
+		Serial.print(millis());
+		Serial.println(F("\tWarning, low power - entering sleep mode"));
 		gauge.clearAlertInterrupt();  // Resets the ALRT pin
 		lowPowerFlag = false;
 		//Sleep();

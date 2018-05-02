@@ -14,11 +14,16 @@ There is a tri-color LED attached to the IOC expander, programmed as follows:
 */
 // ---------------------------------------------------------------------------------
 #define SCOREBOARD_HOTSPOT_ESP								// Set the scoreboard mode - refer to ScoreboardConfigs.h for options
-#define SCOREBOARD_HOTSPOT_RF24_ADDRESS		3				// Set the address - scorebord master is 1, ulcd is 2, wifi is 3 etc 
+#define SCOREBOARD_HOTSPOT_RF24_ADDRESS		4				// Set the address - scorebord master is 1, ulcd is 2, wifi is 3 etc 
 
 #ifndef ESP8266
 #error Remember to set the board to Adafruit HUZZAH ESP8266	// Just a reminder
 #endif
+
+#ifndef SERIAL_DEBUG
+#define SERIAL_DEBUG
+#endif
+
 // ---------------------------------------------------------------------------------
 
 #include <Arduino.h>
@@ -106,34 +111,47 @@ void loop()
 
 	if (millis() > updateMillis)
 	{
+		updateMillis += 1000;
+
 		// Is web connectivity established?
 		if (!web.Connected())
 			web.ConnectWifi();
 
 		// Is the battery OK?
 		i2cbattery.Print();
-		if (i2cbattery.IsLowPower())
+
+		if (i2cbattery.IsCharging())
 		{
-			// if less than 7%, go to sleep
-			if (i2cbattery.Charge() < 7.0)
-				sleep();
-			else
-			{
-				// if less than 20%, flash red
-				if (batteryLedIsOn)
+			// if charging go solid red
+			i2cio.LedOn(I2C_LED_RED);
+		}
+		// Disabled - at very low charge states (1% or 2% for some reason the LIPO 
+		// Fuel Guage doesn't pick up when the voltage is higher when recharging
+		// Needs to be debugged / battery should be OK as it has inbuilt protection
+		//else if (i2cbattery.IsLowPower() && i2cbattery.StateOfCharge() < 5.0)
+		//{
+		//	// if less than 5%, go to sleep
+		//	sleep();
+		//}
+		else if (i2cbattery.IsLowPower())
+		{
+			// if low popwer (less than 20%), flash red
+			if (batteryLedIsOn)
 					i2cio.LedOn(I2C_LED_RED);
 				else
 					i2cio.LedOff(I2C_LED_RED);
 				batteryLedIsOn = !batteryLedIsOn;
-			}
+		}
+		else if (radio.SignalQuality() == 0)
+		{
+			// Are we out of range of the scoreboard?
+			i2cio.LedBlinkOnce(I2C_LED_RED, I2C_LED_FLASH_MILLIS);
 		}
 		else
 		{
-			// Are we in range of the scoreboard?
-			if (radio.SignalQuality() == 0)
-				i2cio.LedBlinkOnce(I2C_LED_RED, I2C_LED_BLINK_MILLIS);
+			// Red led is off
+			i2cio.LedOff(I2C_LED_RED);
 		}
-		updateMillis += 1000;
 	}
 	yield();
 }

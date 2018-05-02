@@ -22,19 +22,22 @@ void StartRF24()
 	// Defaults after init are 2.402 GHz (channel 2), 2Mbps, 0dBm
 	if (!rfManager.init())
 	{
-		Serial.println(F("RF24 Radio init failed"));
+		Serial.print(millis());
+		Serial.println(F("t\RF24 Radio init failed"));
 		result = false;
 	}
 
 	if (!rfDriver.setChannel(RF24_CHANNEL))
 	{
-		Serial.println(F("RF24 Radio set channel failed"));
+		Serial.print(millis());
+		Serial.println(F("\tRF24 Radio set channel failed"));
 		result = false;
 	}
 
 	if (!rfDriver.setRF(RF24_DATA_RATE, RF24_TX_POWER))
 	{
-		Serial.println(F("RF24 Radio set rate and power failed"));
+		Serial.print(millis());
+		Serial.println(F("\tRF24 Radio set rate and power failed"));
 		result = false;
 	}
 
@@ -44,9 +47,15 @@ void StartRF24()
 	rfMessageReceived = now();
 
 	if (result)
-		Serial.println(F("RF24 Radio startup OK"));
+	{
+		Serial.print(millis());
+		Serial.println(F("\tRF24 Radio startup OK"));
+	}
 	else
-		Serial.println(F("RF24 Radio startup failed"));
+	{
+		Serial.print(millis());
+		Serial.println(F("\tRF24 Radio startup failed"));
+	}
 
 	/*
 	radio.begin();

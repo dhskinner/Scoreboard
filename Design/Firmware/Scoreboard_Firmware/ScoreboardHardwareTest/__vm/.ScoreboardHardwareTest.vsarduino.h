@@ -107,6 +107,7 @@ typedef long __PTRDIFF_TYPE__;
 #define noInterrupts() cli()
 
 #include "ScoreboardHardwareTest.ino"
+#include "ScanI2C.ino"
 #include "TestFuelGauge.ino"
 #include "TestNRF24L01.ino"
 #include "TestPCF8574.ino"

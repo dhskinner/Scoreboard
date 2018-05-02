@@ -5,20 +5,17 @@
 */
 
 // ------------------------------------------------------------
-// Assembly
-#include "List.h"
-#include "ButtonWithInterrupt.h"
+// Systems and subsystems to be tested
 #define TEST_WIFI_CONTROLLER		// TEST_WIFI_CONTROLLER, TEST_CONTROLLER, TEST_MASTER
 
-// Systems and subsystems to be tested
 #ifdef TEST_WIFI_CONTROLLER
-//#define TEST_PCF8574_WITHOUT_INTERRUPTS
-#define TEST_PCF8574_WITH_INTERRUPTS
+//#define TEST_PCF8574_BUTTONS
+#define TEST_PCF8574_BUTTONS_INTERRUPT
+#define TEST_PCF8574_LED
 #define TEST_FUELGAUGE
 #define TEST_NRF24L01
-//#define TEST_REALTIMECLOCK
 #elif defined TEST_CONTROLLER
-
+#error TODO
 #elif defined TEST_MASTER
 #define TEST_REALTIMECLOCK
 #else
@@ -43,8 +40,8 @@
 #define RF24_TX_POWER			RH_NRF24::TransmitPowerm6dBm     // TransmitPower0dBm 
 #define RF24_DATA_RATE			RH_NRF24::DataRate250kbps
 #define RF24_RETRIES			5			// number of retries per transmission
-#define LED_BLUE_BIT			5
-#define LED_RED_BIT				6			
+#define LED_RED_BIT				5
+#define LED_BLUE_BIT			6			
 #define LED_GREEN_BIT			7	
 #define LED_ON					0
 #define LED_OFF					1
@@ -63,6 +60,7 @@
 #include <DS1307RTC.h>
 
 #ifdef ESP8266
+#include <Ticker.h>
 #include <pcf8574_esp.h>
 #endif
 
@@ -103,69 +101,7 @@ void setup()
 
 void loop()
 {
-	ProcessPCFUpdate();
-}
-
-void ScanI2C()
-{
-	byte error, address;
-	int nDevices;
-
-	Serial.println(F("Scanning I2C..."));
-
-	nDevices = 0;
-	for (address = 1; address < 127; address++)
-	{
-		// The i2c_scanner uses the return value of
-		// the Write.endTransmisstion to see if
-		// a device did acknowledge to the address.
-		Wire.beginTransmission(address);
-		error = Wire.endTransmission();
-
-		if (error == 0)
-		{
-			Serial.print(F("I2C device found at address 0x"));
-			if (address < 16)
-				Serial.print(F("0"));
-			Serial.print(address, HEX);
-			Serial.print(F(":\t"));
-
-			// Known devices
-			switch (address)
-			{
-			case 0x20:
-				Serial.println(F("PCF8574 IO expander"));
-				break;
-			case 0x36:
-				Serial.println(F("LIPO fuel gauge"));
-				break;
-			default:
-				Serial.println(F("unidentified device"));
-				break;
-			}
-
-			nDevices++;
-		}
-		else if (error == 4)
-		{
-			Serial.print(F("Unknown error at address 0x"));
-			if (address < 16)
-				Serial.print(F("0"));
-			Serial.println(address, HEX);
-		}
-	}
-	if (nDevices == 0)
-		Serial.println(F("No I2C devices found"));
-	else
-		Serial.println(F("Finished I2C scan"));
-}
-
-void Sleep()
-{
-	PCFSleep();
-	RTCSleep();
-	FuelGaugeSleep();
-	ESP.deepSleep(999999999 * 999999999U, WAKE_NO_RFCAL);
+	ProcessPCF();
 }
 
 

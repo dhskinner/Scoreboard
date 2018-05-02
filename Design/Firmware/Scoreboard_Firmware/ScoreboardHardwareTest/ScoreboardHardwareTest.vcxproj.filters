@@ -20,15 +20,10 @@
     <None Include="TestPCF8574.ino" />
     <None Include="TestNRF24L01.ino" />
     <None Include="TestRealtimeClock.ino" />
+    <None Include="ScanI2C.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ScoreboardHardwareTest.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
