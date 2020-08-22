@@ -1,0 +1,22 @@
+{
+ "fxt_color_start": 255,
+ "fxt_character": 0,
+ "fxt_color_end": 255,
+ "fxt_clear_style": 0,
+ "fxt_color_linewidth": 10,
+ "fxt_style": 0,
+ "fxt_speed": 1,
+ "fxt_show_style": 6,
+ "fxt_angle": 0,
+ "fxt_alpha": 255,
+ "fxt_align": 1,
+ "fxt_italic": false,
+ "fxt_color_line": 255,
+ "fxt_underline": false,
+ "fxt_color_backcolor": 0,
+ "fxt_text": "IT CONSULTANTS",
+ "fxt_size": 24,
+ "fxt_name": "Haettenschweiler",
+ "fxt_bold": true,
+ "fxt_color_middle": 255
+}
